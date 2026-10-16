@@ -185,8 +185,8 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 .pp-gallery { gap: .75rem !important; }
 .pp-gallery img { border-radius: 8px; aspect-ratio: 3 / 2; object-fit: cover; }
 .pp-portrait img, .pp-team .wp-block-image img {
-	border-radius: 50%; width: 140px !important; height: 140px !important; aspect-ratio: 1 / 1;
-	object-fit: cover; object-position: 50% 25%; max-width: none;
+	border-radius: 18px; width: 160px !important; height: 160px !important; aspect-ratio: 1 / 1;
+	object-fit: cover; object-position: 50% 0%; max-width: none;
 }
 .pp-team { margin-top: var(--wp--preset--spacing--40); }
 .pp-team .wp-block-columns { gap: 1.5rem 2rem; }
