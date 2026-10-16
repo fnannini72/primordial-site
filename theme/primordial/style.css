@@ -33,7 +33,13 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 	min-width: 220px;
 }
 .pp-header .wp-block-navigation .wp-block-navigation__submenu-container a { padding: .5rem 1rem; }
-.pp-header .pp-cta .wp-block-button__link { padding: .6em 1.2em; font-size: .9375rem; }
+.pp-header .pp-cta .wp-block-button__link { padding: .6em 1.2em; font-size: .9375rem; white-space: nowrap; }
+.pp-header .wp-block-navigation-item { white-space: nowrap; }
+/* Tablet and small laptops: use the overlay menu below 1024px (core switches only at 600px). */
+@media (max-width: 1023px) {
+	.pp-header .wp-block-navigation__responsive-container-open:not(.always-shown) { display: flex; }
+	.pp-header .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) { display: none; }
+}
 @media (max-width: 599px) {
 	.pp-header .pp-logo img { height: 26px; }
 	.pp-header .pp-cta .wp-block-button__link { padding: .5em .95em; font-size: .875rem; }
@@ -70,8 +76,8 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 	margin-top: .6rem;
 }
 .pp-hero .pp-lead { max-width: 34rem; color: #E9DDF0; }
-@media (max-width: 781px) {
-	.pp-hero::after { right: -28vw; width: 78vw; opacity: .22; }
+@media (max-width: 1100px) {
+	.pp-hero::after { right: -22vw; width: 70vw; opacity: .18; }
 }
 
 /* ---------- Section headings on dark ---------- */
@@ -85,7 +91,9 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 	padding-block: clamp(1.5rem, 4vw, 2.5rem);
 }
 .pp-pillar h3 {
-	font-size: clamp(2rem, 5.5vw, 3.75rem);
+	font-size: clamp(1.6rem, 3.6vw, 3.25rem);
+	overflow-wrap: normal;
+	hyphens: none;
 	font-weight: 800;
 	text-transform: uppercase;
 	letter-spacing: -0.02em;
@@ -148,7 +156,7 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 	margin-bottom: .5rem;
 }
 .pp-footer ul { list-style: none; padding: 0; margin: 0; }
-.pp-footer li { margin: .35rem 0; }
+.pp-footer li { margin: .35rem 0; font-size: .9375rem; }
 .pp-footer .pp-fine { color: #B7A6C2; font-size: .8125rem; }
 
 @media (prefers-reduced-motion: reduce) {
