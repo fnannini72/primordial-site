@@ -1,0 +1,142 @@
+/*
+Theme Name: Primordial Protocol
+Theme URI: https://www.primordial-protocol.com
+Description: Child theme of Twenty Twenty-Five for Primordial Protocol. Brand palette, Montserrat + Literata, minimal layout.
+Author: Fabrizio Nannini
+Template: twentytwentyfive
+Version: 1.0.0
+Requires at least: 6.6
+Text Domain: primordial
+*/
+
+/* ---------- Base ---------- */
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+::selection { background: #F89828; color: #250735; }
+:where(a, button, input, summary, .wp-block-button__link):focus-visible {
+	outline: 2px solid #F89828;
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+.wp-site-blocks { overflow-x: clip; }
+main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
+
+/* ---------- Header ---------- */
+.pp-header { position: relative; z-index: 20; }
+.pp-header .pp-logo img { display: block; height: 34px; width: auto; }
+.pp-header .wp-block-navigation a:where(:not(.wp-element-button)) { text-decoration: none; }
+.pp-header .wp-block-navigation a:hover { color: #F89828; }
+.pp-header .wp-block-navigation .wp-block-navigation__submenu-container {
+	background: #250735 !important;
+	border: 1px solid rgba(255,255,255,.08) !important;
+	border-radius: 10px;
+	padding: .35rem 0;
+	min-width: 220px;
+}
+.pp-header .wp-block-navigation .wp-block-navigation__submenu-container a { padding: .5rem 1rem; }
+.pp-header .pp-cta .wp-block-button__link { padding: .6em 1.2em; font-size: .9375rem; }
+@media (max-width: 599px) {
+	.pp-header .pp-logo img { height: 26px; }
+	.pp-header .pp-cta .wp-block-button__link { padding: .5em .95em; font-size: .875rem; }
+}
+.wp-block-navigation__responsive-container.is-menu-open { padding: 1.5rem clamp(1rem, 4vw, 2.5rem); }
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content { font-size: 1.25rem; gap: 1rem; }
+
+/* ---------- Hero lockup (echoes the logo) ---------- */
+.pp-hero { position: relative; isolation: isolate; overflow: hidden; }
+.pp-hero::after {
+	content: "";
+	position: absolute; z-index: -1;
+	right: -6vw; top: 50%;
+	width: min(46vw, 560px); aspect-ratio: 228 / 294;
+	transform: translateY(-50%);
+	background: url("assets/img/mark.svg") center / contain no-repeat;
+	opacity: .9;
+}
+.pp-hero h1 {
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: -0.01em;
+	max-width: 11ch;
+	color: #fff;
+	margin: 0;
+}
+.pp-hero .pp-tracked {
+	font-family: Montserrat, sans-serif;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: .42em;
+	color: #F89828;
+	font-size: clamp(1rem, 2.4vw, 1.6rem);
+	margin-top: .6rem;
+}
+.pp-hero .pp-lead { max-width: 34rem; color: #E9DDF0; }
+@media (max-width: 781px) {
+	.pp-hero::after { right: -28vw; width: 78vw; opacity: .22; }
+}
+
+/* ---------- Section headings on dark ---------- */
+.has-night-background-color, .has-night-deep-background-color { color: #F5F2F7; }
+.has-night-background-color :where(h1,h2,h3,h4), .has-night-deep-background-color :where(h1,h2,h3,h4) { color: #fff; }
+
+/* ---------- Pillar rows ---------- */
+.pp-pillars { border-top: 2px solid #22092F; }
+.pp-pillar {
+	border-bottom: 1px solid #D9CFE0;
+	padding-block: clamp(1.5rem, 4vw, 2.5rem);
+}
+.pp-pillar h3 {
+	font-size: clamp(2rem, 5.5vw, 3.75rem);
+	font-weight: 800;
+	text-transform: uppercase;
+	letter-spacing: -0.02em;
+	line-height: 1;
+	margin: 0;
+}
+.pp-pillar h3 a { text-decoration: none; }
+.pp-pillar h3 a:hover { color: #F2541B; }
+.pp-pillar p { margin: 0; color: #5E4E68; }
+.pp-pillar .pp-more a { font-family: Montserrat, sans-serif; font-weight: 700; font-size: .9375rem; color: #22092F; }
+
+/* ---------- Project blocks ---------- */
+.pp-project { border-top: 2px solid #F89828; padding-top: 1.25rem; }
+.pp-project h3 { margin-top: 0; }
+
+/* ---------- Subscribe band ---------- */
+.pp-subscribe iframe {
+	display: block;
+	width: 100%;
+	max-width: 520px;
+	height: 160px;
+	border: 0;
+	border-radius: 12px;
+	background: #fff;
+}
+
+/* ---------- Long-form pages ---------- */
+.pp-page-title { padding-top: clamp(3rem, 8vw, 6rem); padding-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+.pp-page-title h1 { font-size: clamp(2.4rem, 6vw, 4rem); text-transform: uppercase; }
+.wp-block-post-content :where(p, li) { max-width: 68ch; }
+.wp-block-post-content > p:first-child.has-large-font-size { color: #22092F; }
+
+/* ---------- Substack feed (Feed Embedder) ---------- */
+.pp-feed a { text-decoration: none; }
+.pp-feed a:hover { text-decoration: underline; }
+
+/* ---------- Footer ---------- */
+.pp-footer a { color: #F5F2F7; text-decoration: none; }
+.pp-footer a:hover { color: #F89828; text-decoration: underline; }
+.pp-footer .pp-footer-head {
+	font-family: Montserrat, sans-serif;
+	font-weight: 700;
+	font-size: .8125rem;
+	letter-spacing: .08em;
+	color: #F89828;
+	margin-bottom: .5rem;
+}
+.pp-footer ul { list-style: none; padding: 0; margin: 0; }
+.pp-footer li { margin: .35rem 0; }
+.pp-footer .pp-fine { color: #B7A6C2; font-size: .8125rem; }
+
+@media (prefers-reduced-motion: reduce) {
+	* { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
