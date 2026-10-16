@@ -104,6 +104,11 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 	font-size: clamp(1rem, 2.4vw, 1.6rem);
 	margin-top: .6rem;
 }
+/* Lockup: headline + tracked line share one width, like the logo */
+.pp-lockup { width: fit-content; max-width: 100%; }
+.pp-lockup h1 { margin: 0; }
+.pp-lockup .pp-tracked { display: flex; justify-content: space-between; gap: .4em; white-space: nowrap; margin: .7rem 0 0 !important; }
+.pp-lockup .pp-tracked span:last-child { margin-right: -.42em; }
 .pp-hero .pp-lead { max-width: 34rem; color: #E9DDF0; }
 /* Keep all hero content left-aligned to the wide container instead of auto-centered */
 .pp-hero > * {
@@ -112,6 +117,15 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 }
 @media (max-width: 1100px) {
 	.pp-hero:not(.pp-hero--photo)::after { right: -22vw; width: 70vw; opacity: .18; }
+}
+
+/* Narrow portrait screens: one word per line, bigger type */
+@media (max-width: 599px) and (orientation: portrait) {
+	.pp-hero .pp-lockup h1 { font-size: min(15.5vw, 4.25rem); }
+	.pp-hero .pp-lockup h1 .w { display: block; }
+	.pp-hero .pp-lockup h1 br { display: none; }
+	.pp-hero .pp-lockup .pp-tracked { letter-spacing: .2em; font-size: 3.3vw; }
+	.pp-hero .pp-lockup .pp-tracked span:last-child { margin-right: -.2em; }
 }
 
 /* Photo hero: images from the timeline, crossfading every 30 s (assets/js/hero.js) */
@@ -225,7 +239,6 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 .pp-cover img { border-radius: 4px; box-shadow: 0 18px 40px rgba(34,9,47,.25); }
 @media (max-width: 781px) {
 	.pp-cover { max-width: 240px; }
-	.pp-hero .pp-tracked { letter-spacing: .24em; }
 }
 
 /* ---------- Links page ---------- */
