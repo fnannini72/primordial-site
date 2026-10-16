@@ -35,11 +35,38 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 .pp-header .wp-block-navigation .wp-block-navigation__submenu-container a { padding: .5rem 1rem; }
 .pp-header .pp-cta .wp-block-button__link { padding: .6em 1.2em; font-size: .9375rem; white-space: nowrap; }
 .pp-header .wp-block-navigation-item { white-space: nowrap; }
-/* Tablet and small laptops: use the overlay menu below 1024px (core switches only at 600px). */
+/* Below 1024px the core navigation is replaced by a JavaScript-free menu (details/summary). */
+.pp-mnav { display: none; }
 @media (max-width: 1023px) {
-	.pp-header .wp-block-navigation__responsive-container-open:not(.always-shown) { display: flex; }
-	.pp-header .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) { display: none; }
+	.pp-header .wp-block-navigation { display: none !important; }
+	.pp-mnav { display: block; }
 }
+.pp-mnav summary {
+	list-style: none; cursor: pointer; color: #fff;
+	width: 44px; height: 44px; display: grid; place-items: center;
+	position: relative; z-index: 1001; border-radius: 8px;
+}
+.pp-mnav summary::-webkit-details-marker { display: none; }
+.pp-mnav summary::marker { content: ""; }
+.pp-mnav .pp-mnav-close, .pp-mnav[open] .pp-mnav-open { display: none; }
+.pp-mnav[open] .pp-mnav-close { display: block; }
+.pp-mnav-panel {
+	position: fixed; inset: 0; z-index: 1000;
+	background: #250735; overflow-y: auto; -webkit-overflow-scrolling: touch;
+	padding: 5.5rem clamp(1.25rem, 6vw, 3rem) 3rem;
+}
+.pp-mnav-panel ul { list-style: none; margin: 0; padding: 0; }
+.pp-mnav-panel > ul > li { border-bottom: 1px solid rgba(255,255,255,.1); padding: .9rem 0; }
+.pp-mnav-panel a { color: #fff; text-decoration: none; font-family: Montserrat, sans-serif; }
+.pp-mnav-panel > ul > li > a { font-weight: 800; font-size: 1.5rem; text-transform: uppercase; letter-spacing: -0.01em; }
+.pp-mnav-panel li ul { margin-top: .5rem; padding-left: 1rem; border-left: 2px solid #F89828; }
+.pp-mnav-panel li ul a { display: block; padding: .3rem 0; font-weight: 600; font-size: 1.0625rem; color: #E9DDF0; }
+.pp-mnav-panel a:hover, .pp-mnav-panel a:focus-visible { color: #F89828; }
+.pp-mnav-cta {
+	display: inline-block; margin-top: 2rem; padding: .85em 1.6em; border-radius: 999px;
+	background: #F89828; color: #250735 !important; font-weight: 700;
+}
+
 @media (max-width: 599px) {
 	.pp-header .pp-logo img { height: 26px; }
 	.pp-header .pp-cta .wp-block-button__link { padding: .5em .95em; font-size: .875rem; }
