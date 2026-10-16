@@ -107,6 +107,7 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 /* Lockup: headline + tracked line share one width, like the logo */
 .pp-lockup { width: fit-content; max-width: 100%; }
 .pp-lockup h1 { margin: 0; }
+.pp-hero .pp-lockup h1 { font-size: min(5rem, 7.4vw); }
 .pp-lockup .pp-tracked { display: flex; justify-content: space-between; gap: .4em; white-space: nowrap; margin: .7rem 0 0 !important; }
 .pp-lockup .pp-tracked span:last-child { margin-right: -.42em; }
 .pp-hero .pp-lead { max-width: 34rem; color: #E9DDF0; }
@@ -124,7 +125,7 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 	.pp-hero .pp-lockup h1 { font-size: min(15.5vw, 4.25rem); }
 	.pp-hero .pp-lockup h1 .w { display: block; }
 	.pp-hero .pp-lockup h1 br { display: none; }
-	.pp-hero .pp-lockup .pp-tracked { letter-spacing: .2em; font-size: 3.3vw; }
+	.pp-hero .pp-lockup .pp-tracked { letter-spacing: .2em; font-size: 3.5vw; }
 	.pp-hero .pp-lockup .pp-tracked span:last-child { margin-right: -.2em; }
 }
 
