@@ -122,6 +122,20 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 .pp-feed a { text-decoration: none; }
 .pp-feed a:hover { text-decoration: underline; }
 
+/* ---------- Links page ---------- */
+.pp-links { list-style: none; padding: 0; margin: 0; border-top: 2px solid #22092F; }
+.pp-links li { border-bottom: 1px solid #D9CFE0; margin: 0; max-width: none; }
+.pp-links a {
+	display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+	padding: 1rem .25rem;
+	font-family: Montserrat, sans-serif; font-weight: 700; font-size: clamp(1.125rem, 2.6vw, 1.5rem);
+	text-decoration: none; color: #22092F;
+}
+.pp-links a span { font-family: Literata, Georgia, serif; font-weight: 400; font-size: .9375rem; color: #5E4E68; text-align: right; }
+.pp-links a:hover { color: #F2541B; }
+.pp-links a:hover span { color: #22092F; }
+.pp-links-head { margin-top: var(--wp--preset--spacing--50) !important; margin-bottom: .75rem !important; font-size: 1rem !important; color: #5E4E68; }
+
 /* ---------- Footer ---------- */
 .pp-footer a { color: #F5F2F7; text-decoration: none; }
 .pp-footer a:hover { color: #F89828; text-decoration: underline; }
