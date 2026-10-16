@@ -17,6 +17,14 @@ add_action( 'wp_enqueue_scripts', function () {
 	);
 } );
 
+// Home hero slideshow (front page only).
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_front_page() ) {
+		$file = get_stylesheet_directory() . '/assets/js/hero.js';
+		wp_enqueue_script( 'primordial-hero', get_stylesheet_directory_uri() . '/assets/js/hero.js', array(), (string) filemtime( $file ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
+} );
+
 // Same styles inside the block editor.
 add_action( 'after_setup_theme', function () {
 	add_editor_style( 'style.css' );
