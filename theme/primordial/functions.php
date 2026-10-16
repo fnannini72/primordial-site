@@ -34,3 +34,12 @@ add_action( 'wp_head', function () {
 	printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( $base . 'montserrat.woff2' ) );
 	printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( $base . 'literata.woff2' ) );
 }, 1 );
+
+// Keep the old slideshow link working: it now lives on GitHub Pages.
+add_action( 'template_redirect', function () {
+	$path = isset( $_SERVER['REQUEST_URI'] ) ? strtok( $_SERVER['REQUEST_URI'], '?' ) : '';
+	if ( preg_match( '#^/links/evolutionary_mismatch(\.html)?/?$#', $path ) ) {
+		wp_redirect( 'https://fnannini72.github.io/ancient-body-timeline/', 301 );
+		exit;
+	}
+}, 1 );
