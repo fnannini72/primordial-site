@@ -89,6 +89,8 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 	font-weight: 800;
 	text-transform: uppercase;
 	letter-spacing: -0.01em;
+	font-size: clamp(3.25rem, 13vw, 6.25rem);
+	line-height: .98;
 	max-width: none;
 	color: #fff;
 	margin: 0;
@@ -103,8 +105,8 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 	margin-top: .6rem;
 }
 .pp-hero .pp-lead { max-width: 34rem; color: #E9DDF0; }
-/* Keep hero text left-aligned to the wide container instead of auto-centered */
-.pp-hero > h1, .pp-hero > .pp-lead {
+/* Keep all hero content left-aligned to the wide container instead of auto-centered */
+.pp-hero > * {
 	margin-left: max(0px, calc((100% - 1160px) / 2)) !important;
 	margin-right: auto !important;
 }
