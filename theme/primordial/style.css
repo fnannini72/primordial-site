@@ -112,6 +112,7 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 .has-night-background-color :where(h1,h2,h3,h4), .has-night-deep-background-color :where(h1,h2,h3,h4) { color: #fff; }
 
 /* ---------- Pillar rows ---------- */
+.pp-pillars > *, .pp-pillar > *, .pp-project > * { max-width: none !important; }
 .pp-pillars { border-top: 2px solid #22092F; }
 .pp-pillar {
 	border-bottom: 1px solid #D9CFE0;
@@ -154,13 +155,15 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 
 /* ---------- Substack feed (Feed Embedder) ---------- */
 .pp-feed .fefs-more { display: none; }
+.pp-feed > .fefs-wrap, .pp-feed > * { max-width: none !important; margin-left: 0 !important; margin-right: 0 !important; }
 .pp-feed .fefs-feed--horizontal { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
 .pp-feed .fefs-card { background: #F5F2F7; border-radius: 12px; }
 .pp-feed .fefs-card:hover { background: #fff; }
-.pp-feed .fefs-feed--horizontal .fefs-card-link { flex-direction: column; padding: 0; gap: 0; height: 100%; }
-.pp-feed .fefs-feed--horizontal .fefs-card-image { flex: none; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.pp-feed .fefs-feed--horizontal .fefs-card-link { flex-direction: column; align-items: stretch; padding: 0; gap: 0; height: 100%; }
+.pp-feed .fefs-feed--horizontal .fefs-card-image { flex: none; width: 100%; height: auto; overflow: hidden; }
+.pp-feed .fefs-card-image img { width: 100%; height: auto !important; aspect-ratio: 16 / 9; object-fit: cover; }
 .pp-feed .fefs-card-link:not(:has(.fefs-card-image))::before {
-	content: ""; display: block; aspect-ratio: 16 / 9;
+	content: ""; display: block; width: 100%; aspect-ratio: 16 / 9;
 	background: #390C51 url("assets/img/mark.svg") center / auto 52% no-repeat;
 }
 .pp-feed .fefs-card-body { padding: 1rem 1.1rem 1.25rem; }
@@ -170,7 +173,7 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 .pp-feed .fefs-card-excerpt { font-size: .9375rem; line-height: 1.55; color: #3d2a47; }
 
 /* ---------- Photos ---------- */
-.pp-photo img { border-radius: 10px; }
+.pp-photo img { border-radius: 10px; width: 100%; max-height: min(72vh, 680px); object-fit: cover; }
 .pp-gallery { gap: .75rem !important; }
 .pp-gallery img { border-radius: 8px; aspect-ratio: 3 / 2; object-fit: cover; }
 .pp-portrait img { border-radius: 50%; width: 140px; height: 140px; object-fit: cover; }
