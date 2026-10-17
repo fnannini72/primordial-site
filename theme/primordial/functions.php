@@ -156,7 +156,7 @@ function pp_meta_description() {
 }
 
 add_action( 'wp_head', function () {
-	$token = get_option( 'pp_gsc_token' );
+	$token = get_option( 'pp_gsc_token', '91nmKQ4TlhDpQf-G3tuavloa_1Sg0pJO5QUd-noD4Lk' );
 	if ( $token ) {
 		printf( '<meta name="google-site-verification" content="%s">' . "\n", esc_attr( $token ) );
 	}
