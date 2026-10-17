@@ -4,7 +4,7 @@ Theme URI: https://www.primordial-protocol.com
 Description: Child theme of Twenty Twenty-Five for Primordial Protocol. Brand palette, Montserrat + Literata, minimal layout.
 Author: Fabrizio Nannini
 Template: twentytwentyfive
-Version: 1.1.0
+Version: 1.1.1
 Requires at least: 6.6
 Text Domain: primordial
 */
@@ -274,3 +274,31 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 @media (prefers-reduced-motion: reduce) {
 	* { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
+
+/* Consent banner (Complianz) in the house palette. Accept and Deny get equal weight. */
+.cmplz-cookiebanner {
+	--cmplz_banner_background_color: #F5F2F7;
+	--cmplz_banner_border_color: #D9CFE0;
+	--cmplz_banner_border_radius: 14px;
+	--cmplz_text_color: #22092F;
+	--cmplz_hyperlink_color: #390C51;
+	--cmplz_button_accept_background_color: #390C51;
+	--cmplz_button_accept_border_color: #390C51;
+	--cmplz_button_accept_text_color: #FFFFFF;
+	--cmplz_button_deny_background_color: #390C51;
+	--cmplz_button_deny_border_color: #390C51;
+	--cmplz_button_deny_text_color: #FFFFFF;
+	--cmplz_button_settings_background_color: transparent;
+	--cmplz_button_settings_border_color: #390C51;
+	--cmplz_button_settings_text_color: #390C51;
+	--cmplz_button_border_radius: 999px;
+	--cmplz_slider_active_color: #8B29DE;
+	font-family: Literata, Georgia, serif;
+	box-shadow: 0 12px 40px rgba(37, 7, 53, .18);
+}
+.cmplz-cookiebanner .cmplz-title,
+.cmplz-cookiebanner .cmplz-btn {
+	font-family: Montserrat, sans-serif;
+	font-weight: 600;
+}
+.cmplz-cookiebanner .cmplz-logo { display: none; }
