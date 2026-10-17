@@ -218,3 +218,21 @@ add_action( 'wp_head', function () {
 		echo '<script type="application/ld+json">' . wp_json_encode( $ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
 	}
 }, 2 );
+
+/**
+ * Hide the site's email addresses from simple harvesting bots.
+ * Every address on the domain (including mailto: links) is written as a random mix of
+ * HTML entities: browsers show and open it normally, naive scrapers don't see an email.
+ */
+add_filter( 'render_block', function ( $html ) {
+	if ( false === strpos( $html, '@primordial-protocol.com' ) ) {
+		return $html;
+	}
+	return preg_replace_callback(
+		'/(?:mailto:)?[A-Za-z0-9._%+-]+@primordial-protocol\.com/',
+		function ( $m ) {
+			return antispambot( $m[0] );
+		},
+		$html
+	);
+}, 20 );
