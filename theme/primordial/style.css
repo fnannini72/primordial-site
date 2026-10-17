@@ -4,7 +4,7 @@ Theme URI: https://www.primordial-protocol.com
 Description: Child theme of Twenty Twenty-Five for Primordial Protocol. Brand palette, Montserrat + Literata, minimal layout.
 Author: Fabrizio Nannini
 Template: twentytwentyfive
-Version: 1.1.1
+Version: 1.1.2
 Requires at least: 6.6
 Text Domain: primordial
 */
@@ -302,3 +302,12 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 	font-weight: 600;
 }
 .cmplz-cookiebanner .cmplz-logo { display: none; }
+
+/* Footer menus (editable in Appearance > Editor > Navigation). */
+.pp-footer .pp-footer-nav { font-size: .9375rem; }
+.pp-footer .pp-footer-nav .wp-block-navigation__container { gap: .55rem; align-items: flex-start; }
+.pp-footer .pp-footer-nav a { font-family: Literata, Georgia, serif; font-weight: 400; }
+.pp-footer .pp-footer-social .wp-block-social-links { gap: .9rem 1.1rem; }
+.pp-footer .pp-footer-social .wp-social-link a { color: #F5F2F7; opacity: .85; transition: opacity .2s, color .2s; }
+.pp-footer .pp-footer-social .wp-social-link a:hover { opacity: 1; color: #F89828; text-decoration: none; }
+.pp-footer .pp-footer-social .wp-social-link svg { width: 22px; height: 22px; }
