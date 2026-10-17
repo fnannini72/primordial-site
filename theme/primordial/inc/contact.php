@@ -250,3 +250,15 @@ add_shortcode( 'pp_contact_form', function () {
 	<?php
 	return ob_get_clean();
 } );
+
+/* ---------- Admin list: show whether the email notification went out ---------- */
+
+add_filter( 'manage_pp_message_posts_columns', function ( $cols ) {
+	$cols['pp_mail'] = 'Email sent';
+	return $cols;
+} );
+add_action( 'manage_pp_message_posts_custom_column', function ( $col, $id ) {
+	if ( 'pp_mail' === $col ) {
+		echo '1' === get_post_meta( $id, '_pp_mail_sent', true ) ? '✓' : '<span style="color:#b3261e">✗ not sent</span>';
+	}
+}, 10, 2 );
