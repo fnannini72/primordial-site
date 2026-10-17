@@ -236,3 +236,6 @@ add_filter( 'render_block', function ( $html ) {
 		$html
 	);
 }, 20 );
+
+// Contact form (shortcode [pp_contact_form]).
+require_once get_stylesheet_directory() . '/inc/contact.php';

@@ -4,7 +4,7 @@ Theme URI: https://www.primordial-protocol.com
 Description: Child theme of Twenty Twenty-Five for Primordial Protocol. Brand palette, Montserrat + Literata, minimal layout.
 Author: Fabrizio Nannini
 Template: twentytwentyfive
-Version: 1.1.4
+Version: 1.2.0
 Requires at least: 6.6
 Text Domain: primordial
 */
@@ -311,3 +311,27 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 .pp-footer .pp-footer-social .wp-social-link a { color: #F5F2F7; opacity: .85; transition: opacity .2s, color .2s; }
 .pp-footer .pp-footer-social .wp-social-link a:hover { opacity: 1; color: #F89828; text-decoration: none; }
 .pp-footer .pp-footer-social .wp-social-link svg { width: 22px; height: 22px; }
+
+/* Contact form */
+.pp-form { max-width: 760px; margin-top: 1.5rem; }
+.pp-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.25rem; }
+@media (max-width: 640px) { .pp-form-row { grid-template-columns: 1fr; } }
+.pp-field { margin: 0 0 1.1rem; display: flex; flex-direction: column; gap: .4rem; }
+.pp-field label { font-family: Montserrat, sans-serif; font-weight: 600; font-size: .875rem; color: #22092F; }
+.pp-field label span { font-weight: 400; color: #5E4E68; }
+.pp-field input, .pp-field select, .pp-field textarea {
+	font: inherit; font-size: 1rem; color: #22092F; background: #fff;
+	border: 1px solid #D9CFE0; border-radius: 10px; padding: .75rem .9rem; width: 100%; box-sizing: border-box;
+	transition: border-color .15s, box-shadow .15s;
+}
+.pp-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23390C51' stroke-width='2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .9rem center; padding-right: 2.4rem; }
+.pp-field textarea { resize: vertical; min-height: 9rem; }
+.pp-field input:focus, .pp-field select:focus, .pp-field textarea:focus { outline: none; border-color: #8B29DE; box-shadow: 0 0 0 3px rgba(139, 41, 222, .18); }
+.pp-hp { position: absolute !important; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.pp-form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; margin-top: .25rem; }
+.pp-form-foot button { cursor: pointer; }
+.pp-form-foot button[disabled] { opacity: .6; cursor: default; }
+.pp-form-note { margin: 0; font-size: .875rem; color: #5E4E68; }
+.pp-form-status { margin: 1rem 0 0; font-size: .9375rem; min-height: 1.4em; }
+.pp-form-status.is-ok { color: #1f7a3a; font-weight: 600; }
+.pp-form-status.is-error { color: #b3261e; }
