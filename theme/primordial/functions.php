@@ -128,3 +128,93 @@ add_shortcode( 'pp_substack_feed', function ( $atts ) {
 	}
 	return $out . '</div></div>';
 } );
+
+/* ---------------------------------------------------------------------------
+ * SEO basics, no plugin needed.
+ * - Pages get an Excerpt field: its text becomes the meta description.
+ * - Open Graph / Twitter cards for link previews.
+ * - JSON-LD: WebSite + Person (Fabrizio Nannini) with social profiles.
+ * - Optional Google Search Console verification token (option pp_gsc_token).
+ * ------------------------------------------------------------------------- */
+add_action( 'init', function () {
+	add_post_type_support( 'page', 'excerpt' );
+} );
+
+function pp_meta_description() {
+	if ( is_front_page() ) {
+		$id = (int) get_option( 'page_on_front' );
+	} elseif ( is_singular() ) {
+		$id = get_queried_object_id();
+	} else {
+		$id = 0;
+	}
+	$text = $id ? get_post_field( 'post_excerpt', $id ) : '';
+	if ( ! $text ) {
+		$text = 'Evolutionary mismatch, explained: why an ancient body struggles in a modern world, and what to do about it. Survival, biohacking and the mind, evidence first.';
+	}
+	return trim( wp_strip_all_tags( $text ) );
+}
+
+add_action( 'wp_head', function () {
+	$token = get_option( 'pp_gsc_token' );
+	if ( $token ) {
+		printf( '<meta name="google-site-verification" content="%s">' . "\n", esc_attr( $token ) );
+	}
+
+	$desc  = pp_meta_description();
+	$title = wp_get_document_title();
+	$url   = is_front_page() ? home_url( '/' ) : ( is_singular() ? get_permalink() : home_url( add_query_arg( array() ) ) );
+	$image = get_stylesheet_directory_uri() . '/assets/img/og-default.jpg';
+	if ( is_singular() && has_post_thumbnail() && ! is_front_page() ) {
+		$image = get_the_post_thumbnail_url( null, 'large' );
+	}
+
+	printf( '<meta name="description" content="%s">' . "\n", esc_attr( $desc ) );
+	printf( '<meta property="og:site_name" content="%s">' . "\n", esc_attr( get_bloginfo( 'name' ) ) );
+	printf( '<meta property="og:type" content="%s">' . "\n", is_front_page() ? 'website' : 'article' );
+	printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $title ) );
+	printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $desc ) );
+	printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $url ) );
+	printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $image ) );
+	echo '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' . "\n";
+	echo '<meta property="og:locale" content="en_US">' . "\n";
+	echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+
+	if ( is_front_page() ) {
+		$same = array(
+			'https://primordialprotocol.substack.com',
+			'https://www.youtube.com/@primordialprotocol',
+			'https://open.spotify.com/show/0348re7rAKnDbQlqiHMrrp',
+			'https://podcasts.apple.com/it/podcast/primordial-protocol/id6803166127',
+			'https://www.instagram.com/primordialprotocol_',
+			'https://www.instagram.com/primordialprotocols',
+			'https://www.linkedin.com/company/primordialprotocol',
+			'https://medium.com/@fabrizionannini',
+			'https://x.com/primordialprotocol',
+		);
+		$ld = array(
+			'@context' => 'https://schema.org',
+			'@graph'   => array(
+				array(
+					'@type'       => 'WebSite',
+					'@id'         => home_url( '/#website' ),
+					'url'         => home_url( '/' ),
+					'name'        => 'Primordial Protocol',
+					'description' => $desc,
+					'inLanguage'  => 'en-US',
+					'publisher'   => array( '@id' => home_url( '/#fabrizio' ) ),
+				),
+				array(
+					'@type'    => 'Person',
+					'@id'      => home_url( '/#fabrizio' ),
+					'name'     => 'Fabrizio Nannini',
+					'url'      => home_url( '/about/' ),
+					'image'    => home_url( '/wp-content/uploads/2026/10/fabrizio-nannini.jpg' ),
+					'jobTitle' => 'Survival instructor, mental coach and author',
+					'sameAs'   => $same,
+				),
+			),
+		);
+		echo '<script type="application/ld+json">' . wp_json_encode( $ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+	}
+}, 2 );
