@@ -239,3 +239,6 @@ add_filter( 'render_block', function ( $html ) {
 
 // Contact form (shortcode [pp_contact_form]).
 require_once get_stylesheet_directory() . '/inc/contact.php';
+
+// Newsletter signup (shortcode [pp_newsletter], Kit double opt-in).
+require_once get_stylesheet_directory() . '/inc/newsletter.php';

@@ -4,7 +4,7 @@ Theme URI: https://www.primordial-protocol.com
 Description: Child theme of Twenty Twenty-Five for Primordial Protocol. Brand palette, Montserrat + Literata, minimal layout.
 Author: Fabrizio Nannini
 Template: twentytwentyfive
-Version: 1.2.0
+Version: 1.3.0
 Requires at least: 6.6
 Text Domain: primordial
 */
@@ -335,3 +335,27 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 .pp-form-status { margin: 1rem 0 0; font-size: .9375rem; min-height: 1.4em; }
 .pp-form-status.is-ok { color: #1f7a3a; font-weight: 600; }
 .pp-form-status.is-error { color: #b3261e; }
+
+/* Newsletter signup (Kit). Designed for the dark "night" sections. */
+.pp-news { max-width: 560px; margin: 1.5rem 0 0; }
+.pp-news-row { display: flex; gap: .6rem; flex-wrap: wrap; }
+.pp-news-input {
+	flex: 1 1 240px; min-width: 0; font: inherit; font-size: 1rem; color: #22092F; background: #fff;
+	border: 1px solid transparent; border-radius: 999px; padding: .85rem 1.2rem; box-sizing: border-box;
+}
+.pp-news-input:focus { outline: none; border-color: #F89828; box-shadow: 0 0 0 3px rgba(248, 152, 40, .35); }
+.pp-news-btn {
+	flex: 0 0 auto; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 1rem; color: #22092F;
+	background: #F89828; border: 0; border-radius: 999px; padding: .85rem 1.6rem; cursor: pointer; transition: background .15s;
+}
+.pp-news-btn:hover { background: #ffad4d; }
+.pp-news-btn[disabled] { opacity: .6; cursor: default; }
+@media (max-width: 480px) { .pp-news-btn { flex: 1 1 100%; } }
+.pp-news-note { margin: .8rem 0 0; font-size: .9375rem; opacity: .85; }
+.pp-news-status { margin: .6rem 0 0; font-size: .9375rem; min-height: 1.3em; }
+.pp-news-status.is-ok { color: #F89828; font-weight: 600; }
+.pp-news-status.is-error { color: #ffb4a8; }
+.pp-news.is-done .pp-news-row, .pp-news.is-done .pp-news-note { display: none; }
+.pp-news.is-done .pp-news-status { font-size: 1.0625rem; margin-top: 0; }
+.pp-news-fine { margin: .4rem 0 0; font-size: .75rem; opacity: .55; }
+.pp-news-fine a { color: inherit; }
