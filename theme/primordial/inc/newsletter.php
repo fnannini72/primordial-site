@@ -44,3 +44,14 @@ add_filter( 'wp_robots', function ( $robots ) {
 	}
 	return $robots;
 } );
+
+// Keep the welcome page out of the XML sitemap.
+add_filter( 'wp_sitemaps_posts_query_args', function ( $args, $post_type ) {
+	if ( 'page' === $post_type ) {
+		$welcome = get_page_by_path( 'welcome' );
+		if ( $welcome ) {
+			$args['post__not_in'] = array_merge( isset( $args['post__not_in'] ) ? (array) $args['post__not_in'] : array(), array( $welcome->ID ) );
+		}
+	}
+	return $args;
+}, 10, 2 );
