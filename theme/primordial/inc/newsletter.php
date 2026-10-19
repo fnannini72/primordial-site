@@ -38,7 +38,7 @@ add_shortcode( 'pp_newsletter', function () {
 
 // The welcome page is a destination after confirming, not something to rank.
 add_filter( 'wp_robots', function ( $robots ) {
-	if ( is_page( 'welcome' ) ) {
+	if ( is_page( array( 'welcome', 'newsletter-test' ) ) ) {
 		$robots['noindex'] = true;
 		$robots['follow']  = true;
 	}
