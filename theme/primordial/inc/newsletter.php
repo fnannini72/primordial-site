@@ -28,7 +28,7 @@ add_shortcode( 'pp_newsletter', function () {
 			<input id="<?php echo esc_attr( $id ); ?>" class="pp-news-input" name="email_address" type="email" autocomplete="email" inputmode="email" placeholder="Your email address" required>
 			<button type="submit" class="pp-news-btn">Subscribe</button>
 		</div>
-		<p class="pp-news-note">Free essays on our ancient biology in a modern world. Delivered by Substack. Unsubscribe anytime.</p>
+		<p class="pp-news-note">Free essays on our ancient biology in a modern world. We&rsquo;ll email you a link to confirm. Delivered by Substack. Unsubscribe anytime.</p>
 		<p class="pp-news-status" role="status" aria-live="polite"></p>
 		<p class="pp-news-fine"><a href="/privacy-policy/">Privacy</a> · <a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" rel="noopener" target="_blank">Built with Kit</a></p>
 	</form>
