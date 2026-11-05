@@ -76,6 +76,37 @@ def NOTE(t):
     return P(t, "pp-fine")
 
 
+MEDIA = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "media.json")))
+
+
+def _img_inner(m, alt):
+    return f'<img src="{m["large"]}" alt="{html.escape(alt or m["alt"])}" class="wp-image-{m["id"]}"'
+
+
+def SIMG(key, cls="pp-photo", width=None, caption=None, alt=None):
+    """Image from the Media Library by key (see media.json)."""
+    m = MEDIA[key]
+    attrs = {"id": m["id"], "sizeSlug": "large", "linkDestination": "none", "className": cls}
+    style = ""
+    if width:
+        attrs["width"] = width
+        style = f' style="width:{width}"'
+    cap = f'<figcaption class="wp-element-caption">{caption}</figcaption>' if caption else ""
+    return (f"<!-- wp:image {json.dumps(attrs)} -->\n"
+            f'<figure class="wp-block-image size-large {"is-resized " if width else ""}{cls}">{_img_inner(m, alt)}{style}/>{cap}</figure>\n'
+            "<!-- /wp:image -->")
+
+
+def GALLERY(*keys):
+    inner = "".join(
+        f'<!-- wp:image {{"id":{MEDIA[k]["id"]},"sizeSlug":"large","linkDestination":"none"}} -->\n'
+        f'<figure class="wp-block-image size-large">{_img_inner(MEDIA[k], None)}/></figure>\n<!-- /wp:image -->'
+        for k in keys)
+    return ('<!-- wp:gallery {"linkTo":"none","className":"pp-gallery"} -->\n'
+            '<figure class="wp-block-gallery has-nested-images columns-default is-cropped pp-gallery">'
+            + inner + "</figure>\n<!-- /wp:gallery -->")
+
+
 MS = "/projects/mental-survival"
 U = SITE + "/wp-content/uploads/2026/10/"
 
@@ -122,9 +153,12 @@ page(
     "What coaching is, how we work and how a coaching path starts: listening, assessment, a plan, and practical tools.",
     Q("Coaching is partnering with clients in a thought-provoking and creative process that inspires them to maximize their personal and professional potential.", "International Coaching Federation (ICF)"),
     Q("A collaborative, solution-focused, results-oriented and systematic process in which the coach facilitates the enhancement of work performance, life experience, self-directed learning and personal growth of the coachee.", "Association for Coaching"),
+    SIMG("tennis", "pp-small", "200px"),
     Q("Performance equals potential minus interference: P = p &minus; i.", "W. Timothy Gallwey, <a href=\"https://amzn.to/2X1d9NU\">The Inner Game of Tennis</a>"),
+    SIMG("mentaltraininginc", "pp-small", "320px"),
     P("Mental Training, Inc. describes coaching as teaching skills that prevent slumps, blocks and fears, to build mental resilience and perform at your best."),
     P("We could go on quoting the world's leading coaching experts for hours. So here is our own definition:"),
+    SIMG("brain", "pp-small", "160px"),
     Q("A practical, fast, collaborative process of transformative growth for the individual, built on reframing beliefs, aimed at better self-knowledge, at developing one's potential and at improving relationships with others."),
     P("There's no standard procedure in our toolkit, because there's no standard person. What we do know how to do:"),
     UL([
@@ -155,8 +189,10 @@ page(
 page(
     "profiling", "Profiling and Psychometric Tests",
     "Personality, emotional intelligence and behavioral tests, tailored to individuals and teams, used as a starting point for conversation and growth, never as labels.",
+    SIMG("mosaic", caption="Roman mosaic, 1st century AD. <a href=\"https://commons.wikimedia.org/wiki/File:Roman-mosaic-know-thyself.jpg\">Wikimedia Commons</a>, public domain."),
     P("&ldquo;Know thyself&rdquo; was inscribed at the Temple of Apollo at Delphi, in ancient Greece."),
     P("Knowing who we are, how we relate to others, how empathetic we are and how we perform under stress is the foundation for understanding our real potential and aspirations, at work and in personal growth."),
+    SIMG("jung", "pp-small", "260px", caption="Carl Gustav Jung, c. 1910. <a href=\"https://commons.wikimedia.org/wiki/File:Jung_1910.jpg\">Library of Congress via Wikimedia Commons</a>, public domain."),
     P("Sorting the countless nuances of the human mind into categories, or labeling them, has been the dream of great thinkers since antiquity. As far back as ancient Greece, the theory of the four temperaments tried to make certain features of the psyche easier to understand and predict. Summarizing a few traits to grasp others more quickly is a desire as old as humanity itself."),
     P("Today there are many tests based on the work of leading 20th-century psychologists and contemporary researchers. Used well, they describe a person's main behavioral patterns and personality traits."),
     P("We tailor these tests to the individual and to the team, to bring out the differences between people and put them to good use. They come as single tests or as packages, depending on what you want to explore and how much depth you need."),
@@ -266,11 +302,14 @@ page(
 page(
     "team-building", "Team Building",
     "Outdoor team building that takes colleagues out of their usual roles and comfort zones, from Italian forests to Lapland and the African savanna.",
+    SIMG("tb_forest1"),
     P("In human resources, team building is a set of training activities, variously called team games, team experiences or team wellbeing (playful, experiential or wellness-oriented), whose purpose is to form a group of people. That's the textbook definition: precise, if rather clinical."),
     P("But what is team building really for? Why are more and more companies investing in it?"),
     P("Strictly speaking, &ldquo;building&rdquo; may not be the right word: it suggests constructing something from scratch, yet how many work teams have been together for years and just need a tune-up? Creating a team from zero is one thing; improving an existing one by bringing out the best in its members, so they can express their full potential, is a different matter, and a harder one."),
+    SIMG("tb_model"),
     P("As in any relationship, the bond needs feeding: empathy, changing perspective, putting yourself in others' shoes and contributing to an exchange that benefits everyone. In teamwork too, synergy and communication between members need regular maintenance, toward individual and collective growth."),
     P("In teams, our beliefs about people often lag behind how those people have actually grown: what we think of someone may not change at the same pace as the person does."),
+    SIMG("tb_forest2"),
     P("Stepping out of standard work patterns and experiencing colleagues in other roles, and above all outside the comfort zone, is key to resetting our mental models of the people we share our working days with."),
     P("More and more authors recognize emotional intelligence as a set of skills complementary to purely cognitive abilities. Daniel Goleman (<em>Working with Emotional Intelligence</em>, 1998) names five core emotional and social competencies:"),
     OL(["self-awareness", "self-regulation", "motivation", "empathy", "social skills"]),
@@ -279,9 +318,10 @@ page(
     P("Our style is distinctly outdoor: outside the comfort zone of the workplace and outside traditional patterns and roles, we encourage change by stimulating creativity and empathy, reaching results as a team and turning old dynamics upside down. The aim is to reach a goal together, where everyone really matters and is encouraged to contribute with everything they have."),
     H2("Where we do it"),
     P("It could be a forest in Italy, or the shore of a mountain lake. Or the cold of Lapland, driving a team of Alaskan huskies and sleeping under an unforgettable aurora borealis. Or walking and surviving in the heat of the savanna or an African jungle."),
-    IMG(179, U + "pure-survival-kenya.jpg", "On the trail in Kenya"),
+    GALLERY("tb_lake", "tb_huskies", "tb_aurora", "tb_nepal", "tb_camp", "tb_kenya"),
     P("Every option is proposed after assessing the needs of the client and the team. Everything is documented and filmed, so you have a record and a memory of the activities and the emotions."),
     P("Our work comes in several forms: from a simple incentive trip, to a more structured outdoor training program, to a true immersive team building, (really) 24 hours a day, designed for results on the group and on each person that are concrete, lasting and, above all, useful. When do you want to leave?"),
+    SIMG("tb_team"),
     BTNS(("Plan a team building", "/contact/?topic=team-building", False), ("Pure Survival", "/projects/pure-survival/", True)),
 )
 
@@ -289,16 +329,23 @@ page(
 page(
     "forest-therapy", "Forest Therapy",
     "Guided, mindful time among the trees inspired by Japanese shinrin-yoku: who it's for, how it works, and what the research does and doesn't show.",
+    SIMG("ft_mountains"),
     P("Forest therapy grew out of <em>shinrin-yoku</em> (&ldquo;forest bathing&rdquo;), a practice promoted in Japan since the 1980s. It involves mindful, structured time in woodland, following particular methods, in places chosen for their trees and their atmosphere. Alongside this contact with nature, participants do awareness exercises to bring attention to the present and actively engage all the senses in the place where they are. Researchers have been studying it for decades, and it has a growing number of practitioners around the world."),
     IMG(166, U + "pure-survival-group-forest.jpg", "A group walking slowly in the forest"),
     P("<strong>Who is it for?</strong> Everyone. It can be especially valuable for people who don't live in contact with nature and who live or work mostly in cities."),
+    SIMG("ft_path"),
     P("<strong>How does it work?</strong> In a group, with a guide leading a walk through carefully chosen green areas and teaching breathing and multisensory awareness techniques, adapted to each situation and setting."),
+    SIMG("ft_pine"),
     P("<strong>How long does it last?</strong> Half a day, a full day, or several days in a row. Time in green areas is planned around each person's needs and the group's availability."),
+    SIMG("ft_autumn"),
     P("<strong>What happens, in practice?</strong> Some trees release aromatic compounds, called phytoncides, that we breathe in during the walk; researchers have studied their possible effects on stress and on immune markers, with promising but still preliminary results. Soft, filtered light and the sound of leaves are relaxing for most people, and the breathing and multisensory techniques help us connect with ourselves, here and now. Many people come home feeling more alive, pleasantly slowed down, more present and aware."),
     H2("Why it matters now"),
+    SIMG("ft_fog"),
     P("Humans have become an urban species: more than half of the world's population now lives in urban areas, far from the woods and green spaces where we lived for almost all of our history as a species. This change happened far too quickly for us to fully adapt, and the mismatch has real costs."),
+    SIMG("ft_mountainside"),
     P("We are more and more disconnected from nature. Cities rarely have as much green space as they need, because parks are costly to maintain and often lose out to uses seen as more important, or more profitable. The public garden has become a place we hurry through rather than a place to stop or meet. Technology has become woven into every part of our routines: we look around less and check our phones more, out of both need and habit."),
     P("It was in response to this kind of disconnection that, in 1982, Japan's Forestry Agency began promoting &ldquo;forest bathing&rdquo; to bring people out of cities and back in touch with nature."),
+    SIMG("ft_canopy"),
     H2("What the research says"),
     P(f"The research has grown quickly: dozens of studies, mostly small and short-term, have found encouraging effects on stress, mood and some physiological markers, such as blood pressure. The evidence is promising, not conclusive, and that's how we present it. <a href=\"{MS}/forest-therapy-benefits/\">Read a summary of the main findings and their limits</a>."),
     P(f"There's also growing interest in bringing some of these benefits indoors, into homes and workplaces: see <a href=\"{MS}/indoor-forest/\">Indoor Forest</a>."),
@@ -314,18 +361,23 @@ page(
     P("What are the real, measurable benefits of forest bathing? Here are five areas researchers have studied, with the sources."),
     P("A word of caution first. Most of these studies are small, often short-term, and many come from a limited number of research groups in Japan. The findings are best read as promising rather than proven."),
     H2("1. Immune function"),
+    SIMG("fb_drink"),
     P("Breathing phytoncides, natural compounds that some trees produce to protect themselves, has been linked to higher activity and numbers of natural killer (NK) cells, part of the immune system's first line of defense. In a series of small studies of healthy Japanese adults who spent three days in forest areas, NK activity rose and stayed higher for more than 30 days after the trip; a city trip of the same length did not have this effect. These are changes in an immune marker in healthy people, not evidence that forest bathing prevents disease."),
     NOTE("Source: Li Q. Effect of forest bathing trips on human immune function. <em>Environ Health Prev Med.</em> 2010;15(1):9&ndash;17."),
     H2("2. Blood pressure"),
+    SIMG("fb_bp"),
     P("High blood pressure is a major risk factor for stroke and heart attack. A systematic review and meta-analysis of 20 trials, with 732 participants in total, found lower systolic and diastolic blood pressure in forest settings than in non-forest settings."),
     NOTE("Source: Ideno Y et al. Blood pressure-lowering effect of Shinrin-yoku (forest bathing): a systematic review and meta-analysis. <em>BMC Complement Altern Med.</em> 2017;17(1):409."),
     H2("3. Stress"),
+    SIMG("fb_stress"),
     P("In field experiments carried out in 24 forests across Japan, walking in or simply viewing a forest was associated with lower cortisol (a stress hormone), lower pulse rate and blood pressure, and greater parasympathetic activity than the same activities in a city. Psychological studies have also reported lower stress and better mood after forest walks."),
     NOTE("Sources: Park BJ et al. The physiological effects of Shinrin-yoku: evidence from field experiments in 24 forests across Japan. <em>Environ Health Prev Med.</em> 2010;15(1):18&ndash;26. Morita E et al. Psychological effects of forest environments on healthy adults. <em>Public Health.</em> 2007;121(1):54&ndash;63."),
     H2("4. The parasympathetic nervous system"),
+    SIMG("fb_neurons"),
     P("Stress keeps the &ldquo;fight, flight or freeze&rdquo; response of the sympathetic nervous system switched on. A review of field experiments found that forest bathing was associated with less anxiety and with higher heart rate variability, a sign that the parasympathetic &ldquo;rest and digest&rdquo; system is more active. The authors call the evidence limited but consistent, and note small samples and the lack of a standard forest-bathing protocol."),
     NOTE("Source: Farrow MR, Washburn K. A review of field experiments on the effect of forest bathing on anxiety and heart rate variability. <em>Glob Adv Health Med.</em> 2019;8:2164956119848654."),
     H2("5. Mood and well-being"),
+    SIMG("fb_leaves"),
     P("A 2017 review of 64 studies summarized research on forest bathing and nature therapy across several areas, including mood, anxiety and stress, cardiovascular health and pain, and concluded that the practice is a promising complement to conventional care that deserves further study."),
     NOTE("Source: Hansen MM, Jones R, Tocchini K. Shinrin-Yoku (forest bathing) and nature therapy: a state-of-the-art review. <em>Int J Environ Res Public Health.</em> 2017;14(8):851."),
     P("Forest time is a good complement to a healthy life, not a substitute for medical care."),
@@ -336,12 +388,17 @@ page(
 page(
     "indoor-forest", "Indoor Forest (I+F)",
     "I+F (Indoor Forest): biophilic design of workplaces, homes and urban spaces inspired by research on forest bathing.",
+    SIMG("ft_path"),
     P("I+F stands for <strong>Indoor Forest</strong>: a project to redesign corporate or commercial green spaces, or to design new ones, inspired by the research on forest bathing and grounded in good design."),
     P("Volumes are rebalanced to make room for healthy, natural greenery. Relaxation and smart-working areas are created where technology doesn't dominate and nature is present. Plants are chosen and combined to make spaces more pleasant to breathe and live in. Aromas, essential oils and phytoncides like those of the forests they come from are used. Water flows freely, adding the humidity that's good for breathing and skin, while light and sound support a healthier, more productive working day."),
+    SIMG("if_iso"),
     P("In collaboration with the architecture studio of Mauro Mazzali, we offer the design or redesign of workplaces, homes and urban areas, creating livable green spaces: places to work well or to decompress during breaks, within an efficient, healthy and ecological system."),
+    SIMG("if_home"),
     H2("Biophilia and interior design"),
     P("Bringing the well-being of green elements indoors, supported by the building's central systems, to recreate the microclimate of a natural setting such as a forest or woodland."),
+    SIMG("if_wall1"),
     P("The aim is a stimulating new work environment, healthy and as restorative as possible, so that people genuinely benefit from spending time there: a space they might even prefer to working from home. An environment that supports concentration and lower stress through natural elements."),
+    SIMG("if_wall2"),
     P("Biophilic design can offer good answers to today's challenges in offices. A study by Politecnico di Milano and the University of Genoa on people's well-being during the COVID-19 lockdown found that the features of their homes mattered for their mental and physical health: room size, natural light, acoustic comfort, privacy, the presence of balconies, terraces or gardens, the view outside and indoor air quality. These issues will need to be addressed from now on, and biophilic design is well placed to help."),
     BTNS(("Talk to us about a project", "/contact/?topic=other", False), ("Forest therapy", MS + "/forest-therapy/", True)),
 )
@@ -379,7 +436,7 @@ page(
         "<em>Segnatore</em>, a traditional Italian folk healer, third generation through my family (paternal aunt, father)",
         "Study and practice of Tibetan singing bowls and harmonic overtone singing (sygyt)",
         "Storywell PMAI facilitator on Jungian archetypes (Pearson-Marr method)",
-        "Emotional intelligence assessor for the Six Seconds and TEIQue psychometric tests",
+        "Emotional intelligence assessor for the TEIQue psychometric test",
         "Mental Survival coach on <a href=\"https://ritualmente.com\">Ritualmente</a>",
         "Psychological First Aid training at Johns Hopkins University (MOOC) and with the NCTSN (The National Child Traumatic Stress Network)",
         "Studies in anthropology, religion and spirituality, myth and symbolism (Jungian orientation)",
