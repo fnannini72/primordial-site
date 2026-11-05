@@ -242,3 +242,6 @@ require_once get_stylesheet_directory() . '/inc/contact.php';
 
 // Newsletter signup (shortcode [pp_newsletter], Kit double opt-in).
 require_once get_stylesheet_directory() . '/inc/newsletter.php';
+
+// Admin-only image import from the old project sites.
+require_once get_stylesheet_directory() . '/inc/sideload.php';
