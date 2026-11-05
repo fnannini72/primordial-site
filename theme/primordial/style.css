@@ -370,3 +370,7 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 .pp-mnav-sub[open] > summary::after { content: "\2212"; }
 .pp-mnav-panel .pp-mnav-sub ul { margin: .25rem 0 .5rem; border-left-color: rgba(248, 152, 40, .45); }
 .pp-mnav-panel .pp-mnav-sub ul a { font-size: 1rem; font-weight: 500; }
+
+/* Embedded third-party form (Survivability Test) */
+.pp-embed-form { margin: 1.5rem 0; border: 1px solid #D9CFE0; border-radius: 12px; overflow: hidden; background: #fff; }
+.pp-embed-form iframe { display: block; width: 100%; height: 1500px; max-height: 85vh; border: 0; }

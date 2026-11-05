@@ -281,7 +281,6 @@ page(
     P("It could be a forest in Italy, or the shore of a mountain lake. Or the cold of Lapland, driving a team of Alaskan huskies and sleeping under an unforgettable aurora borealis. Or walking and surviving in the heat of the savanna or an African jungle."),
     IMG(179, U + "pure-survival-kenya.jpg", "On the trail in Kenya"),
     P("Every option is proposed after assessing the needs of the client and the team. Everything is documented and filmed, so you have a record and a memory of the activities and the emotions."),
-    P("A &ldquo;full immersion&rdquo; scuba course with French Foreign Legion military instructors, at one of their facilities? It can be done."),
     P("Our work comes in several forms: from a simple incentive trip, to a more structured outdoor training program, to a true immersive team building, (really) 24 hours a day, designed for results on the group and on each person that are concrete, lasting and, above all, useful. When do you want to leave?"),
     BTNS(("Plan a team building", "/contact/?topic=team-building", False), ("Pure Survival", "/projects/pure-survival/", True)),
 )
@@ -351,7 +350,7 @@ page(
 page(
     "shamanism", "Shamanism",
     "Fabrizio Nannini's personal path in transcultural shamanism: how it started, how he teaches it, and his training. A spiritual practice, not a therapy.",
-    IMG(168, U + "fabrizio-nannini.jpg", "Fabrizio Nannini", "pp-portrait"),
+    IMG(307, SITE + "/wp-content/uploads/2026/11/gabri_sqr.jpg", "Fabrizio Nannini with his son", "pp-portrait"),
     P("I've worked with energy, if we can call it that, for a very long time. My path began with an unstoppable cultural curiosity, sparked by reading Frazer's <em>The Golden Bough</em> at 17. It continued with the anthropological study of ritual, then of transcultural shamanism, the common denominator of human spirituality, and of the healing techniques tied to energy and emotions. That curiosity has never been fully satisfied, because the path of study and learning is endless."),
     P("My training and approach are very rational. I keep testing theories and techniques, to see which of them can help people feel better and which ones I'm able to use."),
     P("It all started with my grandmother. I was six and she was very ill. I wanted with all my heart to make her well, but I had no idea how."),
@@ -396,10 +395,11 @@ page(
 # 13. Survivability Test ---------------------------------------------------------------
 page(
     "survivability-test", "Survivability Test®",
-    "The Survivability Test®, a questionnaire on how people tend to respond to emergencies. Currently available in Italian.",
+    "The Survivability Test®, a questionnaire on how people tend to respond to emergencies. Take it online (currently in Italian).",
     P("The Survivability Test&reg; is a questionnaire built around how people respond to emergencies: how we tend to react under threat, pressure and uncertainty."),
-    P("It's currently available in Italian only. The questionnaire opens on an external form service."),
-    BTNS(("Take the test (in Italian)", "https://formnx.com/f/11xi12", False), ("Coaching", MS + "/coaching/", True)),
+    P("It's currently available in Italian only. If the form below doesn't load, <a href=\"https://formnx.com/f/11xi12\">open it in a new page</a>."),
+    '<!-- wp:html -->\n<div class="pp-embed-form"><iframe src="https://formnx.com/f/11xi12?iframe=true" title="Survivability Test (in Italian)" loading="lazy" allow="clipboard-write"></iframe></div>\n<!-- /wp:html -->',
+    BTNS(("Coaching", MS + "/coaching/", False), ("Mental Survival", MS + "/", True)),
 )
 
 # 14. Team and approach -----------------------------------------------------------------
@@ -412,8 +412,6 @@ page(
     P("A certified mental coach, trained in Psychological First Aid (Johns Hopkins, 2016), and the author of a manual on the psychology of survival (<em>Mental Survival</em>, Hoepli, 2016). He wrote a survival column for <em>Men's Health</em> Italy and often appears as a consultant on Italian TV programs (Rai and Mediaset). Certified MMTIC&reg; facilitator for the Jungian personality-type instrument for young people aged 7 to 17."),
     H3("Francesco Campiotti"),
     P("A graduate in modern literature with a PhD in personal education and training. Since 2011 he has worked in education and training across many fields. An instructor with the Federazione Internazionale Survival and an outdoor trainer, he has led expeditions on several continents and in many natural environments. He works with several companies as a team builder and trainer."),
-    H3("Luca Menti"),
-    P("A psychologist and psychotherapist specializing in Ericksonian hypnotherapy and bioenergetic analysis, and an EMDR and TRE therapist. He works with individuals and couples, adults and minors."),
     H2("Our approach"),
     P("Entirely practical and aimed at getting the result you want, as quickly as possible, and making it last."),
     P("In pool, sometimes the only way to pot the ball is a bank shot. That's what we do almost every time: we approach the problem from a different angle, focusing only on a positive solution. If we take on a job, it's because we like it, we care about it and we're confident we can make a positive difference. If clients want to work with us, it's because they can see our passion, and that we don't give up easily."),
