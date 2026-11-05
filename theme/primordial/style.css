@@ -4,7 +4,7 @@ Theme URI: https://www.primordial-protocol.com
 Description: Child theme of Twenty Twenty-Five for Primordial Protocol. Brand palette, Montserrat + Literata, minimal layout.
 Author: Fabrizio Nannini
 Template: twentytwentyfive
-Version: 1.3.3
+Version: 1.3.4
 Requires at least: 6.6
 Text Domain: primordial
 */
@@ -360,3 +360,13 @@ main.pp-main > .wp-block-post-content > :first-child { margin-block-start: 0; }
 .pp-news.is-done .pp-news-status { font-size: 1.0625rem; margin-top: 0; }
 .pp-news-fine { margin: .4rem 0 0; font-size: .75rem; opacity: .55; }
 .pp-news-fine a { color: inherit; }
+
+/* Nested submenu (Projects > Mental Survival) */
+.pp-header .wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container { max-height: 80vh; overflow-y: auto; }
+.pp-mnav-sub > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: .3rem 0; font-family: Montserrat, sans-serif; font-weight: 600; font-size: 1.0625rem; color: #E9DDF0; }
+.pp-mnav-sub > summary::-webkit-details-marker { display: none; }
+.pp-mnav-sub > summary::marker { content: ""; }
+.pp-mnav-sub > summary::after { content: "+"; font-weight: 700; color: #F89828; margin-left: 1rem; }
+.pp-mnav-sub[open] > summary::after { content: "\2212"; }
+.pp-mnav-panel .pp-mnav-sub ul { margin: .25rem 0 .5rem; border-left-color: rgba(248, 152, 40, .45); }
+.pp-mnav-panel .pp-mnav-sub ul a { font-size: 1rem; font-weight: 500; }
