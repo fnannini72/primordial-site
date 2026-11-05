@@ -219,7 +219,7 @@ page(
         "<strong>DISC</strong>: behavioral patterns across four broad areas.",
         "<strong>Mindset test</strong>, based on the work of Carol Dweck, professor of psychology at Stanford University: two broad attitudes toward the possibility of personal change.",
     ]),
-    P(f"The <a href=\"{MS}/six-seconds/\">Six Seconds</a> tools deserve a separate mention: a well-developed set of instruments for assessing and developing emotional intelligence."),
+    P(f"For emotional intelligence we use the TEIQue. For an overview of another widely used family of EQ instruments, see <a href=\"{MS}/six-seconds/\">Six Seconds</a>."),
     P("These and other tests only become meaningful and useful when the results are analyzed one by one, in depth, and discussed with the person, so that the many shades of each of us come together into a realistic picture. Used this way, they are a solid starting point for targeted personal development."),
     H2("Q&amp;A"),
     H3("Why test with us?"),
@@ -275,17 +275,18 @@ page(
         "to manage our emotional responses better;",
         "to make better use of our abilities and improve where we're weaker.",
     ]),
-    P("The emotional intelligence assessments we offer are a practical tool for improving our relationship with ourselves, in social life and at work. The results are <strong>not</strong> an evaluation but an exploration: the starting point for real improvement."),
-    BTNS(("Ask about an EQ assessment", "/contact/?topic=psychometric", False), ("Six Seconds assessments", MS + "/six-seconds/", True)),
+    P("The emotional intelligence assessments we offer, based on the TEIQue, are a practical tool for improving our relationship with ourselves, in social life and at work. The results are <strong>not</strong> an evaluation but an exploration: the starting point for real improvement."),
+    BTNS(("Ask about an EQ assessment", "/contact/?topic=psychometric", False), ("About Six Seconds", MS + "/six-seconds/", True)),
 )
 
 # 7. Six Seconds -----------------------------------------------------------------
 page(
-    "six-seconds", "Six Seconds EQ Assessments",
-    "Six Seconds emotional intelligence assessments (SEI): the reports available and how the debrief turns results into practical strategies.",
+    "six-seconds", "Six Seconds Emotional Intelligence Tools",
+    "An overview of the Six Seconds emotional intelligence assessments (SEI) and their reports. Our own EQ assessments use the TEIQue.",
     P("<a href=\"https://www.6seconds.org\">Six Seconds</a> is a global network dedicated to emotional intelligence research and assessment. Its simple, clear model looks at how, when and where we make the best use of this remarkable quality, which we can (and should) put at the service of our rational side."),
     P("Six Seconds assessments give a detailed analysis of a person's emotional profile, with a focus on how to improve, in practice, the less efficient areas and bring them into balance with our strengths."),
     P("The questionnaire takes about ten minutes to complete, comes with reliability and validity data published by Six Seconds, and produces several types of report."),
+    P(f"<strong>Please note:</strong> we don't currently administer Six Seconds assessments. Our emotional intelligence assessments use the TEIQue (see <a href=\"{MS}/emotional-intelligence/\">Emotional intelligence</a>). This page is an overview of the Six Seconds tools for anyone comparing the options."),
     H2("The main reports"),
     UL([
         "<strong>SEI AV Development</strong>: the most widely used and complete emotional intelligence report.",
@@ -294,8 +295,8 @@ page(
         "<strong>Brain Profiles</strong>: three visual, at-a-glance reports summarizing strengths and weak spots in emotional behavior.",
         "<strong>SEI 360&deg;</strong>: self-assessment combined with feedback from a chosen group of people around you, to compare how you see yourself with how others see you, in their own words.",
     ]),
-    P("What the test really does, or rather the debrief session where the profiler goes through the report with you (at least one hour per person), is to look at your strengths and weak points together and, above all, to work out practical strategies for the areas to work on first (empathy, self-awareness, goals, relationships), so you can develop your emotional skills in a concrete way."),
-    BTNS(("Ask about a Six Seconds assessment", "/contact/?topic=psychometric", False), ("Emotional intelligence", MS + "/emotional-intelligence/", True)),
+    P("Much of the value lies in the debrief, where a certified Six Seconds practitioner goes through the report with the person (usually at least an hour), to look at strengths and weak points together and, above all, to work out practical strategies for the areas to work on first (empathy, self-awareness, goals, relationships), so you can develop your emotional skills in a concrete way."),
+    BTNS(("Ask about an EQ assessment (TEIQue)", "/contact/?topic=psychometric", False), ("Emotional intelligence", MS + "/emotional-intelligence/", True)),
 )
 
 # 8. Team building ---------------------------------------------------------------
